@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://code-translates.vercel.app'),
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://code-translates.vercel.app'),
   title: {
     default: "Code Translator - AI-Powered Code Translation Tool",
     template: "%s | Code Translator"
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://code-translates.vercel.app',
+    url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://code-translates.vercel.app',
     title: 'Code Translator - AI-Powered Code Translation Tool',
     description: 'Transform code between 9 programming languages instantly with AI precision. Convert C, C++, Python, Java, JavaScript, TypeScript, Ruby, PHP, and Rust code effortlessly.',
     siteName: 'Code Translator',
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     yahoo: 'your-yahoo-verification-code',
   },
   alternates: {
-    canonical: 'https://code-translates.vercel.app',
+    canonical: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://code-translates.vercel.app',
   },
   category: 'technology',
 };
@@ -97,7 +97,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <StructuredData />
-        <link rel="canonical" href="https://code-translates.vercel.app" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="mobile-web-app-capable" content="yes" />
