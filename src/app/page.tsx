@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { Button } from '@/components/Button';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { CodeEditor } from '@/components/CodeEditor';
+import PWAInstallPrompt from '@/components/PWAInstallPrompt';
+import OfflineIndicator from '@/components/OfflineIndicator';
 import { SupportedLanguage } from '@/lib/utils';
-import { ArrowRight, Code2, Sparkles, Zap, RefreshCw, Copy, Download, Share2 } from 'lucide-react';
+import { Code2, Sparkles, Zap, RefreshCw } from 'lucide-react';
 
 export default function Home() {
   const [inputCode, setInputCode] = useState('');
@@ -97,7 +99,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10 container mx-auto px-4 py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-fade-in">
+        <section className="text-center mb-16 animate-fade-in" aria-labelledby="hero-heading">
           <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/20 dark:border-blue-800/20 px-6 py-3 rounded-full mb-8 shadow-lg">
             <div className="relative">
               <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400 animate-pulse" />
@@ -107,7 +109,7 @@ export default function Home() {
               Next-Gen AI Translation
             </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+          <h1 id="hero-heading" className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-slate-100 dark:via-blue-100 dark:to-slate-100 bg-clip-text text-transparent">
               Transform Code
             </span>
@@ -115,16 +117,17 @@ export default function Home() {
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent animate-gradient">
               Effortlessly
             </span>
-          </h2>
+          </h1>
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Convert between <span className="font-semibold text-blue-600 dark:text-blue-400">9 programming languages</span> with
             <span className="font-semibold text-purple-600 dark:text-purple-400"> AI precision</span> and
             <span className="font-semibold text-cyan-600 dark:text-cyan-400"> lightning speed</span>
           </p>
-        </div>
+        </section>
 
         {/* Translation Interface */}
-        <div className="max-w-7xl mx-auto">
+        <section className="max-w-7xl mx-auto" aria-labelledby="translator-heading">
+          <h2 id="translator-heading" className="sr-only">Code Translation Tool</h2>
           <div className="relative">
             {/* Glass Card Container */}
             <div className="bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
@@ -209,7 +212,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Error Message */}
         {error && (
@@ -224,11 +227,11 @@ export default function Home() {
         )}
 
         {/* Features */}
-        <div className="max-w-6xl mx-auto mt-20">
+        <section className="max-w-6xl mx-auto mt-20" aria-labelledby="features-heading">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent mb-4">
+            <h2 id="features-heading" className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent mb-4">
               Why Choose Our Translator?
-            </h3>
+            </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400">Experience the future of code translation</p>
           </div>
 
@@ -242,7 +245,7 @@ export default function Home() {
                     <Zap className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Lightning Fast</h4>
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Lightning Fast</h3>
                 <p className="text-slate-600 dark:text-slate-400">Get instant translations powered by cutting-edge AI technology</p>
               </div>
             </div>
@@ -256,7 +259,7 @@ export default function Home() {
                     <Code2 className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">9 Languages</h4>
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">9 Languages</h3>
                 <p className="text-slate-600 dark:text-slate-400">Support for all major programming languages and frameworks</p>
               </div>
             </div>
@@ -270,13 +273,45 @@ export default function Home() {
                     <Sparkles className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Smart Translation</h4>
+                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Smart Translation</h3>
                 <p className="text-slate-600 dark:text-slate-400">Maintains logic, structure, and best practices across languages</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-xl mt-20">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
+                Created with ❤️ by{' '}
+                <a
+                  href="https://www.linkedin.com/in/anubhav-chaudhary-4bba7918b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 inline-block cursor-pointer"
+                >
+                  Anubhav
+                </a>
+              </p>
+              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full animate-pulse delay-500"></div>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-500">
+              © 2025 Code Translator. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* PWA Install Prompt */}
+      <PWAInstallPrompt />
+
+      {/* Offline Indicator */}
+      <OfflineIndicator />
     </div>
   );
 }
