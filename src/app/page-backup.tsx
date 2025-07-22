@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Button } from '@/components/Button';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { CodeEditor } from '@/components/CodeEditor';
+// import PWAInstallPrompt from '@/components/PWAInstallPrompt';
+// import OfflineIndicator from '@/components/OfflineIndicator';
 import { SupportedLanguage } from '@/lib/utils';
 import { Code2, Sparkles, Zap, RefreshCw } from 'lucide-react';
 
@@ -313,8 +315,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
